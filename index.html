@@ -1,1 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Awaludin Al Ayubi · Portofolio</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Particle.js (lightweight) -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    /* ===== RESET & VARIABEL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0F172A;
+      color: #fff;
+      overflow-x: hidden;
+      cursor: default;
+    }
+    /* custom scroll */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0F172A; }
+    ::-webkit-scrollbar-thumb { background: #38BDF8; border-radius: 20px; }
 
+    /* ===== GLOW CURSOR ===== */
+    #cursor-glow {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,0.25) 0%, rgba(6,182,212,0) 80%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: left 0.08s ease-out, top 0.08s ease-out;
+      mix-blend-mode: screen;
+    }
+
+    /* ===== LOADING SCREEN ===== */
+    #loading-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #0F172A;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    #loading-screen.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-ring {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #38BDF8;
+      border-right: 4px solid #06B6D4;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* ===== SCROLL PROGRESS BAR ===== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #38BDF8, #06B6D4);
+      z-index: 9998;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    /* ===== STICKY NAVBAR ===== */
+    .navbar-custom {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+      transition: all 0.3s;
+    }
+    .navbar-custom .nav-link {
+      color: rgba(255,255,255,0.7) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+    .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
+      color: #fff !important;
+      background: rgba(56, 189, 248, 0.15);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #38BDF8, #06B6D4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== HERO ===== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 6rem 0 4rem;
+      z-index: 1;
+    }
+    #particles-js {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .profile-img-wrapper {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #38BDF8, #06B6D4, #38BDF8);
+      background-size: 300% 300%;
+      animation: gradientMove 6s ease infinite;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+      margin: 0 auto 1.5rem;
+    }
+    .profile-img-wrapper img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0F172A;
+    }
+    @keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #38BDF8, #06B6D4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .typing-text {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      min-height: 3.5rem;
+      border-right: 3px solid #38BDF8;
+      display: inline-block;
+      padding-right: 10px;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{border-color:#38BDF8} 50%{border-color:transparent} }
+
+    .btn-glow {
+      border-radius: 50px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #38BDF8, #06B6D4);
+      border: none;
+      color: #0F172A;
+      transition: 0.3s;
+      box-shadow: 0 4px 20px rgba(56,189,248,0.3);
+    }
+    .btn-glow:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.5);
+      color: #0F172A;
+    }
+    .btn-outline-glow {
+      border-radius: 50px;
+      padding: 0.7rem 2rem;
+      font-weight: 600;
+      background: transparent;
+      border: 2px solid #38BDF8;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .btn-outline-glow:hover {
+      background: rgba(56,189,248,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.2);
+      color: #fff;
+    }
+    .scroll-down {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: floatY 2s infinite;
+      color: rgba(255,255,255,0.6);
+      font-size: 2rem;
+    }
+    @keyframes floatY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(12px)} }
+
+    /* ===== GLASSMORPHISM CARD ===== */
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      transition: 0.4s;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 30px 50px -16px rgba(56,189,248,0.15);
+    }
+
+    /* ===== SKILL PROGRESS ===== */
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+    .skill-item .skill-name {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .progress-bar-custom {
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress-bar-custom .progress-fill {
+      height: 100%;
+      border-radius: 20px;
+      width: 0%;
+      background: linear-gradient(90deg, #38BDF8, #06B6D4);
+      transition: width 1.2s ease;
+    }
+
+    /* ===== PROJECT CARD ===== */
+    .project-card {
+      overflow: hidden;
+      border-radius: 24px;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      transition: 0.4s;
+    }
+    .project-card img {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.06);
+    }
+    .project-card .card-body {
+      padding: 1.5rem;
+    }
+    .filter-btn {
+      border-radius: 50px;
+      padding: 0.4rem 1.5rem;
+      margin: 0 4px 8px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      transition: 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #38BDF8;
+      border-color: #38BDF8;
+      color: #0F172A;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-item {
+      position: relative;
+      padding-left: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-left: 2px solid rgba(56, 189, 248, 0.3);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 4px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #38BDF8;
+      box-shadow: 0 0 20px rgba(56,189,248,0.5);
+    }
+
+    /* ===== CERTIFICATE GALLERY ===== */
+    .cert-img {
+      border-radius: 16px;
+      transition: 0.4s;
+      cursor: pointer;
+      border: 1px solid rgba(56,189,248,0.1);
+    }
+    .cert-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(56,189,248,0.2);
+    }
+
+    /* ===== CONTACT ===== */
+    .form-control-custom {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 0.9rem 1.2rem;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .form-control-custom:focus {
+      background: rgba(255,255,255,0.08);
+      border-color: #38BDF8;
+      box-shadow: 0 0 0 4px rgba(56,189,248,0.15);
+      color: #fff;
+    }
+    .form-control-custom::placeholder { color: rgba(255,255,255,0.4); }
+
+    /* ===== FOOTER ===== */
+    .footer-premium {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(56,189,248,0.1);
+    }
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 1.3rem;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .social-icon:hover {
+      background: #38BDF8;
+      color: #0F172A;
+      transform: translateY(-4px);
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38BDF8, #06B6D4);
+      border: none;
+      color: #0F172A;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 24px rgba(56,189,248,0.3);
+      transition: 0.3s;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+    }
+    #backToTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #backToTop:hover { transform: scale(1.08); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+      .typing-text { font-size: 1.2rem; }
+      .profile-img-wrapper { width: 140px; height: 140px; }
+    }
+    @media (max-width: 576px) {
+      .hero-title { font-size: 2rem; }
+      .typing-text { font-size: 1rem; min-height: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loader-ring"></div>
+    <p style="color:rgba(255,255,255,0.6); font-weight:300;">Memuat portofolio...</p>
+  </div>
+
+  <!-- CURSOR GLOW -->
+  <div id="cursor-glow"></div>
+
+  <!-- SCROLL PROGRESS -->
+  <div id="progress-bar"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="backToTop" class="d-flex align-items-center justify-content-center"><i class="bi bi-chevron-up"></i></button>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#">Awaludin</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero-section">
+    <div id="particles-js"></div>
+    <div class="container hero-content">
+      <div class="row align-items-center text-center text-lg-start">
+        <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
+          <div class="d-lg-none">
+            <div class="profile-img-wrapper"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231E293B'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='36' fill='%2338BDF8' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin"></div>
+          </div>
+          <h1 class="hero-title mb-2">Halo, Saya <br><span>Awaludin Al Ayubi</span></h1>
+          <div class="typing-text mb-3" id="typingText"></div>
+          <p class="text-secondary mb-4" style="font-size:1.1rem; max-width:500px;">Mahasiswa Sistem Informasi · Web & UI/UX Enthusiast</p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+            <a href="#" class="btn btn-glow"><i class="bi bi-download me-2"></i>Download CV</a>
+            <a href="#projects" class="btn btn-outline-glow"><i class="bi bi-grid me-2"></i>Lihat Project</a>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1200">
+          <div class="profile-img-wrapper" style="width:240px; height:240px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231E293B'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='42' fill='%2338BDF8' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-down"><i class="bi bi-chevron-down"></i></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-5" style="background: radial-gradient(circle at 10% 20%, #0F172A, #0a0f1f);">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Tentang <span style="color:#38BDF8;">Saya</span></h2>
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="glass-card p-4">
+            <p style="font-size:1.05rem; line-height:1.8;">Saya adalah mahasiswa Sistem Informasi dengan ketertarikan pada Web Development, UI/UX Design, Database Management, dan Mobile Development. Saya senang membangun solusi digital yang kreatif, modern, dan bermanfaat bagi banyak orang.</p>
+            <div class="row text-center mt-4">
+              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="5">0</h3><span class="text-secondary">Project</span></div>
+              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="7">0</h3><span class="text-secondary">Skill</span></div>
+              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="3">0</h3><span class="text-secondary">Sertifikat</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="row g-3">
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-code-square fs-1 text-info"></i><h5 class="mt-2">Web Dev</h5><span class="text-secondary">HTML, CSS, JS, PHP</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-palette fs-1 text-info"></i><h5 class="mt-2">UI/UX</h5><span class="text-secondary">Figma, Prototype</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-database fs-1 text-info"></i><h5 class="mt-2">Database</h5><span class="text-secondary">MySQL, ERD</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-phone fs-1 text-info"></i><h5 class="mt-2">Mobile</h5><span class="text-secondary">Flutter</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="py-5" style="background:#0F172A;">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Keahlian <span style="color:#38BDF8;">Teknis</span></h2>
+      <div class="row g-4">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="glass-card p-4">
+            <div class="skill-item"><div class="skill-name"><span>HTML</span><span id="htmlVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="90" id="htmlFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>CSS</span><span id="cssVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="85" id="cssFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>JavaScript</span><span id="jsVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="78" id="jsFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>PHP</span><span id="phpVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="75" id="phpFill"></div></div></div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="glass-card p-4">
+            <div class="skill-item"><div class="skill-name"><span>MySQL</span><span id="mysqlVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="80" id="mysqlFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>Flutter</span><span id="flutterVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="70" id="flutterFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>Figma</span><span id="figmaVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="82" id="figmaFill"></div></div></div>
+            <div class="skill-item"><div class="skill-name"><span>Bootstrap</span><span id="bsVal">0%</span></div><div class="progress-bar-custom"><div class="progress-fill" data-skill="88" id="bsFill"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="py-5" style="background:radial-gradient(circle at 80% 30%, #0F172A, #0a111f);">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Project <span style="color:#38BDF8;">Unggulan</span></h2>
+      <div class="text-center mb-4" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="uiux">UI/UX</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+      </div>
+      <div class="row g-4" id="projectContainer">
+        <!-- project 1 -->
+        <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="zoom-in">
+          <div class="project-card card h-100">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231E293B'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2338BDF8' font-family='Inter' font-weight='600'%3E🌴 Alor%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Alor">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Website Pariwisata Alor</h5>
+              <p class="card-text text-secondary">Informasi wisata, budaya, sejarah Kabupaten Alor.</p>
+              <span class="badge bg-info bg-opacity-25 text-info">HTML · CSS · JS</span>
+              <button class="btn btn-sm btn-outline-info mt-3 w-100" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Website Pariwisata Alor" data-desc="Website informasi wisata, budaya, sejarah, dan destinasi Kabupaten Alor. Teknologi: HTML, CSS, JavaScript.">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+        <!-- project 2 -->
+        <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="zoom-in" data-aos-delay="100">
+          <div class="project-card card h-100">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231E293B'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2306B6D4' font-family='Inter' font-weight='600'%3E🔧 Inventory%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Inventory">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Sistem Inventory Bengkel</h5>
+              <p class="card-text text-secondary">Pengelolaan stok sparepart & transaksi bengkel.</p>
+              <span class="badge bg-info bg-opacity-25 text-info">PHP · MySQL · Bootstrap</span>
+              <button class="btn btn-sm btn-outline-info mt-3 w-100" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Sistem Inventory Bengkel Motor" data-desc="Sistem pengelolaan stok sparepart dan transaksi bengkel. Teknologi: PHP, MySQL, Bootstrap.">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+        <!-- project 3 -->
+        <div class="col-md-6 col-lg-4 project-item" data-category="uiux" data-aos="zoom-in" data-aos-delay="200">
+          <div class="project-card card h-100">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231E293B'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2338BDF8' font-family='Inter' font-weight='600'%3E🌸 Parfum%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Parfum">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Prototype Website Parfum</h5>
+              <p class="card-text text-secondary">UI/UX Design dengan Figma, fitur login & dashboard.</p>
+              <span class="badge bg-info bg-opacity-25 text-info">Figma</span>
+              <button class="btn btn-sm btn-outline-info mt-3 w-100" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Prototype Website Parfum" data-desc="UI/UX Design menggunakan Figma. Fitur Login dan Dashboard Pengguna.">Lihat Detail</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section id="experience" class="py-5" style="background:#0F172A;">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Pengalaman & <span style="color:#38BDF8;">Pendidikan</span></h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="glass-card p-4">
+            <div class="timeline-item" data-aos="fade-up">
+              <h5 class="fw-bold">Mahasiswa Sistem Informasi</h5>
+              <span class="text-info">2023 - Sekarang</span>
+              <p class="text-secondary mt-1">Fokus pada pengembangan web, basis data, dan desain UI/UX.</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+              <h5 class="fw-bold">Freelance Web Developer</h5>
+              <span class="text-info">2024 - Sekarang</span>
+              <p class="text-secondary mt-1">Membangun website sederhana untuk UMKM dan portofolio.</p>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+              <h5 class="fw-bold">UI/UX Designer (Figma)</h5>
+              <span class="text-info">2025</span>
+              <p class="text-secondary mt-1">Mendesain prototype aplikasi mobile dan web untuk tugas kampus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATE ===== -->
+  <section id="certificate" class="py-5" style="background:radial-gradient(circle at 20% 80%, #0F172A, #0a111f);">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Sertifikat <span style="color:#38BDF8;">Pendukung</span></h2>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%231E293B' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2338BDF8' font-family='Inter' font-weight='700'%3E🎓 Sertifikat A%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert1" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="100"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%231E293B' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2306B6D4' font-family='Inter' font-weight='700'%3E📜 Sertifikat B%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert2" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="200"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%231E293B' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2338BDF8' font-family='Inter' font-weight='700'%3E🏅 Sertifikat C%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert3" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="py-5" style="background:#0F172A;">
+    <div class="container py-4">
+      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Hubungi <span style="color:#38BDF8;">Saya</span></h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          <div class="glass-card p-4">
+            <form id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6"><input type="text" class="form-control form-control-custom" placeholder="Nama" required></div>
+                <div class="col-md-6"><input type="email" class="form-control form-control-custom" placeholder="Email" required></div>
+                <div class="col-12"><input type="text" class="form-control form-control-custom" placeholder="Subjek"></div>
+                <div class="col-12"><textarea class="form-control form-control-custom" rows="4" placeholder="Pesan..." required></textarea></div>
+                <div class="col-12"><button type="submit" class="btn btn-glow w-100"><i class="bi bi-send me-2"></i>Kirim Pesan</button></div>
+              </div>
+            </form>
+            <div class="mt-4 text-center">
+              <a href="#" class="social-icon me-2"><i class="bi bi-github"></i></a>
+              <a href="#" class="social-icon me-2"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-icon me-2"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-premium py-4">
+    <div class="container text-center">
+      <p class="mb-0 text-secondary">&copy; 2026 Awaludin Al Ayubi · Built with <i class="bi bi-heart-fill text-info" style="font-size:0.9rem;"></i></p>
+    </div>
+  </footer>
+
+  <!-- ===== MODALS ===== -->
+  <!-- Project Modal -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:#1E293B; border:1px solid rgba(56,189,248,0.2);">
+        <div class="modal-header border-0"><h5 class="modal-title text-white" id="projectModalLabel">Detail Project</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body text-white"><p id="projectModalDesc">Detail project akan tampil disini.</p></div>
+      </div>
+    </div>
+  </div>
+  <!-- Certificate Modal (lightbox) -->
+  <div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background:#0F172A; border:none;"><img src="" id="certModalImg" class="img-fluid rounded" alt="certificate"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // ================================================================
+    // 1. LOADING SCREEN
+    // ================================================================
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('hide');
+      }, 800);
+    });
+
+    // ================================================================
+    // 2. CURSOR GLOW
+    // ================================================================
+    const glow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    // ================================================================
+    // 3. SCROLL PROGRESS
+    // ================================================================
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollY / height) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+      // back to top visibility
+      const btn = document.getElementById('backToTop');
+      if (scrollY > 500) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    });
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ================================================================
+    // 4. TYPING EFFECT
+    // ================================================================
+    const texts = ["Web Developer", "UI/UX Designer", "System Analyst", "Flutter Developer"];
+    let idx = 0, charIdx = 0, isDeleting = false;
+    const typeEl = document.getElementById('typingText');
+    function typeLoop() {
+      const current = texts[idx];
+      if (isDeleting) {
+        typeEl.textContent = current.substring(0, charIdx--);
+        if (charIdx < 0) { isDeleting = false; idx = (idx+1)%texts.length; setTimeout(typeLoop, 600); return; }
+        setTimeout(typeLoop, 60);
+      } else {
+        typeEl.textContent = current.substring(0, charIdx++);
+        if (charIdx > current.length) { isDeleting = true; setTimeout(typeLoop, 800); return; }
+        setTimeout(typeLoop, 100);
+      }
+    }
+    typeLoop();
+
+    // ================================================================
+    // 5. COUNTER ANIMATION (About)
+    // ================================================================
+    function animateCounters() {
+      document.querySelectorAll('.counter').forEach(c => {
+        const target = parseInt(c.getAttribute('data-target'));
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const interval = setInterval(() => {
+          current += increment;
+          if (current >= target) { current = target; clearInterval(interval); }
+          c.textContent = current;
+        }, 30);
+      });
+    }
+    // trigger counter saat about terlihat
+    const aboutSection = document.getElementById('about');
+    const observerCounter = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); observerCounter.disconnect(); } });
+    }, { threshold: 0.3 });
+    observerCounter.observe(aboutSection);
+
+    // ================================================================
+    // 6. SKILL PROGRESS (trigger saat scroll)
+    // ================================================================
+    let skillAnimated = false;
+    function animateSkills() {
+      if (skillAnimated) return;
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        const target = bar.getAttribute('data-skill');
+        const valEl = document.getElementById(bar.id.replace('Fill','Val'));
+        let current = 0;
+        const step = Math.ceil(target / 30);
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(interval); }
+          bar.style.width = current + '%';
+          if (valEl) valEl.textContent = current + '%';
+        }, 25);
+      });
+      skillAnimated = true;
+    }
+    const skillsSection = document.getElementById('skills');
+    const observerSkill = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { animateSkills(); observerSkill.disconnect(); } });
+    }, { threshold: 0.2 });
+    observerSkill.observe(skillsSection);
+
+    // ================================================================
+    // 7. PROJECT FILTER
+    // ================================================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        projectItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ================================================================
+    // 8. PROJECT MODAL DETAIL
+    // ================================================================
+    const projectModal = document.getElementById('projectModal');
+    projectModal.addEventListener('show.bs.modal', function(event) {
+      const button = event.relatedTarget;
+      const title = button.getAttribute('data-title');
+      const desc = button.getAttribute('data-desc');
+      document.getElementById('projectModalLabel').textContent = title;
+      document.getElementById('projectModalDesc').textContent = desc;
+    });
+
+    // ================================================================
+    // 9. CERTIFICATE LIGHTBOX
+    // ================================================================
+    const certModal = document.getElementById('certModal');
+    certModal.addEventListener('show.bs.modal', function(event) {
+      const img = event.relatedTarget;
+      document.getElementById('certModalImg').src = img.src;
+    });
+
+    // ================================================================
+    // 10. CONTACT FORM VALIDASI
+    // ================================================================
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const inputs = this.querySelectorAll('input, textarea');
+      let valid = true;
+      inputs.forEach(inp => { if (!inp.value.trim()) { inp.style.borderColor = '#ef4444'; valid = false; } else { inp.style.borderColor = ''; } });
+      if (valid) alert('Pesan terkirim (simulasi). Terima kasih!');
+      else alert('Harap isi semua field yang diperlukan.');
+    });
+
+    // ================================================================
+    // 11. AOS INIT + PARALLAX (partikel sudah diinisialisasi di bawah)
+    // ================================================================
+    AOS.init({ once: true, offset: 40, duration: 800 });
+
+    // ================================================================
+    // 12. PARTICLES.JS
+    // ================================================================
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 1000 } },
+        color: { value: '#38BDF8' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#38BDF8', opacity: 0.1, width: 1 },
+        move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' }
+      },
+      interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
+    });
+
+    // ================================================================
+    // 13. NAVBAR ACTIVE STATE (scroll)
+    // ================================================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+
+    // ================================================================
+    // 14. FLOATING / PARALLAX efek tambahan (smooth)
+    // ================================================================
+    console.log('✨ Portofolio Awaludin Al Ayubi siap!');
+  </script>
+</body>
+</html>
