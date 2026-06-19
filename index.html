@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Awaludin Al Ayubi · Portofolio</title>
+  <title>Awaludin Al Ayubi · Portofolio IT</title>
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Particle.js (lightweight) -->
+  <!-- Particle.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
     /* ===== RESET & VARIABEL ===== */
@@ -25,121 +25,132 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0a;
+      background: #0a0015;
       color: #e8e8e8;
       overflow-x: hidden;
       cursor: default;
     }
-    /* custom scroll */
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0a0a0a; }
-    ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 20px; box-shadow: 0 0 15px #00d4ff55; }
+    ::-webkit-scrollbar-track { background: #0a0015; }
+    ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 20px; box-shadow: 0 0 20px #a855f766; }
 
     /* ===== GLOW CURSOR ===== */
     #cursor-glow {
       position: fixed;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, rgba(0, 212, 255, 0) 80%);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 80%);
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
       transition: left 0.06s ease-out, top 0.06s ease-out;
       mix-blend-mode: screen;
-      border: 1px solid rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(168, 85, 247, 0.05);
     }
 
     /* ===== LOADING SCREEN ===== */
     #loading-screen {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: #0a0a0a;
+      background: #0a0015;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 99999;
-      transition: opacity 0.8s ease, visibility 0.8s;
+      transition: opacity 0.9s ease, visibility 0.9s;
     }
     #loading-screen.hide {
       opacity: 0;
       visibility: hidden;
     }
     .loader-ring {
-      width: 60px; height: 60px;
+      width: 70px; height: 70px;
       border-radius: 50%;
       border: 3px solid transparent;
-      border-top: 3px solid #00d4ff;
-      border-right: 3px solid #7b2ffc;
+      border-top: 3px solid #a855f7;
+      border-right: 3px solid #7c3aed;
       animation: spin 0.9s cubic-bezier(0.6, 0, 0.4, 1) infinite;
       margin-bottom: 20px;
-      filter: drop-shadow(0 0 20px #00d4ff55);
+      filter: drop-shadow(0 0 30px #a855f766);
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    /* ===== SCROLL PROGRESS BAR ===== */
+    /* ===== SCROLL PROGRESS ===== */
     #progress-bar {
       position: fixed;
       top: 0; left: 0;
       height: 3px;
-      background: linear-gradient(90deg, #00d4ff, #7b2ffc, #00d4ff);
+      background: linear-gradient(90deg, #a855f7, #7c3aed, #a855f7);
       background-size: 200% 100%;
       animation: gradientMove 3s linear infinite;
       z-index: 9998;
       width: 0%;
       transition: width 0.1s ease;
-      box-shadow: 0 0 30px #00d4ff66;
+      box-shadow: 0 0 40px #a855f766;
     }
     @keyframes gradientMove { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
 
     /* ===== STICKY NAVBAR ===== */
     .navbar-custom {
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(20px) saturate(1.2);
-      -webkit-backdrop-filter: blur(20px) saturate(1.2);
-      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.03);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.08);
-      transition: all 0.3s;
+      background: rgba(10, 0, 21, 0.82);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      box-shadow: 0 4px 50px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(168, 85, 247, 0.06);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.08);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 10px 0;
     }
     .navbar-custom .nav-link {
-      color: rgba(255,255,255,0.6) !important;
+      color: rgba(255,255,255,0.5) !important;
       font-weight: 500;
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
       transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-size: 0.9rem;
       letter-spacing: 0.3px;
       position: relative;
     }
-    .navbar-custom .nav-link::after {
+    .navbar-custom .nav-link::before {
       content: '';
       position: absolute;
-      bottom: 4px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00d4ff, #7b2ffc);
+      inset: 0;
+      border-radius: 40px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(168,85,247,0), rgba(168,85,247,0));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
       transition: 0.4s ease;
-      transform: translateX(-50%);
-      border-radius: 10px;
     }
-    .navbar-custom .nav-link:hover::after,
-    .navbar-custom .nav-link.active::after {
-      width: 60%;
+    .navbar-custom .nav-link:hover::before,
+    .navbar-custom .nav-link.active::before {
+      background: linear-gradient(135deg, rgba(168,85,247,0.3), rgba(124,58,237,0.3));
     }
     .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active {
       color: #fff !important;
-      text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+      text-shadow: 0 0 40px rgba(168, 85, 247, 0.15);
+      background: rgba(168, 85, 247, 0.05);
     }
     .navbar-brand {
       font-weight: 800;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, #a855f7, #7c3aed, #a855f7);
+      background-size: 200% 200%;
+      animation: gradientMove 4s ease infinite;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       letter-spacing: -0.5px;
+      position: relative;
+    }
+    .navbar-brand::after {
+      content: '⚡';
+      font-size: 1.2rem;
+      -webkit-text-fill-color: initial;
+      margin-left: 6px;
+      opacity: 0.6;
     }
 
     /* ===== HERO ===== */
@@ -148,9 +159,38 @@
       display: flex;
       align-items: center;
       position: relative;
-      padding: 6rem 0 4rem;
+      padding: 7rem 0 4rem;
       z-index: 1;
-      background: radial-gradient(ellipse at 50% 0%, #141414 0%, #0a0a0a 70%);
+      background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0015 70%);
+      overflow: hidden;
+    }
+    /* background jaringan / laptop shadow effect */
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 70%;
+      height: 140%;
+      background: 
+        radial-gradient(circle at 70% 40%, rgba(168,85,247,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 30% 80%, rgba(124,58,237,0.02) 0%, transparent 40%),
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(168,85,247,0.01) 40px, rgba(168,85,247,0.01) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(168,85,247,0.01) 40px, rgba(168,85,247,0.01) 41px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    /* laptop shadow */
+    .hero-section::after {
+      content: '💻';
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      font-size: 12rem;
+      opacity: 0.03;
+      transform: rotate(-8deg);
+      z-index: 0;
+      filter: blur(2px);
     }
     #particles-js {
       position: absolute;
@@ -162,37 +202,47 @@
       z-index: 2;
     }
     .profile-img-wrapper {
-      width: 180px;
-      height: 180px;
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
       padding: 5px;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc, #00d4ff);
+      background: linear-gradient(135deg, #a855f7, #7c3aed, #a855f7);
       background-size: 300% 300%;
       animation: gradientMove 4s ease infinite;
-      box-shadow: 0 0 60px rgba(0, 212, 255, 0.2), inset 0 0 60px rgba(0, 212, 255, 0.05);
+      box-shadow: 0 0 80px rgba(168, 85, 247, 0.15), inset 0 0 80px rgba(168, 85, 247, 0.05);
       margin: 0 auto 1.5rem;
-      transition: 0.5s;
+      transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .profile-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(168,85,247,0.1), transparent 70%);
+      z-index: -1;
+      filter: blur(20px);
     }
     .profile-img-wrapper:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 80px rgba(0, 212, 255, 0.3);
+      transform: scale(1.04);
+      box-shadow: 0 0 100px rgba(168, 85, 247, 0.2);
     }
     .profile-img-wrapper img {
       width: 100%; height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #0a0a0a;
+      border: 3px solid #0a0015;
       background: #111;
     }
 
     .hero-title {
-      font-size: 3.4rem;
+      font-size: 3.5rem;
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -1px;
     }
     .hero-title span {
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc, #00d4ff);
+      background: linear-gradient(135deg, #a855f7, #7c3aed, #a855f7);
       background-size: 300% 300%;
       animation: gradientMove 4s ease infinite;
       -webkit-background-clip: text;
@@ -200,37 +250,38 @@
       background-clip: text;
     }
     .typing-text {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.7);
-      min-height: 3.5rem;
-      border-right: 3px solid #00d4ff;
+      color: rgba(255,255,255,0.6);
+      min-height: 3.8rem;
+      border-right: 3px solid #a855f7;
       display: inline-block;
-      padding-right: 10px;
+      padding-right: 12px;
       animation: blink 0.8s step-end infinite;
-      text-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
+      text-shadow: 0 0 50px rgba(168, 85, 247, 0.05);
     }
-    @keyframes blink { 0%,100%{border-color:#00d4ff} 50%{border-color:transparent} }
+    @keyframes blink { 0%,100%{border-color:#a855f7} 50%{border-color:transparent} }
 
     .btn-glow {
       border-radius: 50px;
-      padding: 0.8rem 2.2rem;
+      padding: 0.85rem 2.4rem;
       font-weight: 600;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
       border: none;
-      color: #0a0a0a;
-      transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 4px 30px rgba(0, 212, 255, 0.25);
+      color: #0a0015;
+      transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 40px rgba(168, 85, 247, 0.2);
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.3px;
     }
     .btn-glow::before {
       content: '';
       position: absolute;
       top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 70%);
       opacity: 0;
-      transition: 0.5s;
+      transition: 0.6s;
       transform: scale(0.5);
     }
     .btn-glow:hover::before {
@@ -238,25 +289,26 @@
       transform: scale(1);
     }
     .btn-glow:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 50px rgba(0, 212, 255, 0.4);
-      color: #0a0a0a;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 12px 60px rgba(168, 85, 247, 0.35);
+      color: #0a0015;
     }
     .btn-outline-glow {
       border-radius: 50px;
-      padding: 0.8rem 2.2rem;
+      padding: 0.85rem 2.4rem;
       font-weight: 600;
       background: transparent;
-      border: 2px solid rgba(0, 212, 255, 0.4);
+      border: 2px solid rgba(168, 85, 247, 0.3);
       color: #fff;
-      transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
+      letter-spacing: 0.3px;
     }
     .btn-outline-glow:hover {
-      background: rgba(0, 212, 255, 0.08);
-      border-color: #00d4ff;
-      transform: translateY(-4px);
-      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
+      background: rgba(168, 85, 247, 0.06);
+      border-color: #a855f7;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 50px rgba(168, 85, 247, 0.08);
       color: #fff;
     }
     .scroll-down {
@@ -265,29 +317,37 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
-      animation: floatY 2.5s ease-in-out infinite;
-      color: rgba(255,255,255,0.3);
-      font-size: 2rem;
-      transition: 0.3s;
+      animation: floatY 2.8s ease-in-out infinite;
+      color: rgba(255,255,255,0.15);
+      font-size: 2.2rem;
+      transition: 0.4s;
+      background: rgba(168,85,247,0.03);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(168,85,247,0.05);
     }
-    .scroll-down:hover { color: rgba(255,255,255,0.7); }
-    @keyframes floatY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(14px)} }
+    .scroll-down:hover { color: rgba(255,255,255,0.5); background: rgba(168,85,247,0.06); }
+    @keyframes floatY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(16px)} }
 
-    /* ===== GLASSMORPHISM CARD (dark premium) ===== */
+    /* ===== GLASS CARD ===== */
     .glass-card {
-      background: rgba(20, 20, 20, 0.7);
-      backdrop-filter: blur(20px) saturate(1.3);
-      -webkit-backdrop-filter: blur(20px) saturate(1.3);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 24px;
-      padding: 2rem 1.8rem;
+      background: rgba(20, 5, 40, 0.65);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border: 1px solid rgba(168, 85, 247, 0.06);
+      border-radius: 28px;
+      padding: 2rem 2rem;
       transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.03);
+      box-shadow: 0 20px 70px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(168,85,247,0.04);
     }
     .glass-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(0, 212, 255, 0.15);
-      box-shadow: 0 30px 80px -20px rgba(0, 212, 255, 0.08);
+      border-color: rgba(168, 85, 247, 0.12);
+      box-shadow: 0 30px 90px -20px rgba(168, 85, 247, 0.05);
     }
 
     /* ===== SKILL PROGRESS ===== */
@@ -300,41 +360,41 @@
       font-weight: 500;
       margin-bottom: 6px;
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.7);
     }
     .progress-bar-custom {
       height: 6px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(168, 85, 247, 0.06);
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
     }
     .progress-bar-custom .progress-fill {
       height: 100%;
       border-radius: 20px;
       width: 0%;
-      background: linear-gradient(90deg, #00d4ff, #7b2ffc);
+      background: linear-gradient(90deg, #a855f7, #7c3aed);
       transition: width 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
     }
 
     /* ===== PROJECT CARD ===== */
     .project-card {
       overflow: hidden;
-      border-radius: 24px;
-      background: rgba(16, 16, 16, 0.8);
+      border-radius: 28px;
+      background: rgba(16, 4, 35, 0.75);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid rgba(168, 85, 247, 0.04);
       transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 50px -15px rgba(0, 0, 0, 0.7);
     }
     .project-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      border-color: rgba(0, 212, 255, 0.2);
-      box-shadow: 0 30px 70px -20px rgba(0, 212, 255, 0.1);
+      transform: translateY(-14px) scale(1.01);
+      border-color: rgba(168, 85, 247, 0.15);
+      box-shadow: 0 30px 80px -20px rgba(168, 85, 247, 0.06);
     }
     .project-card img {
-      height: 200px;
+      height: 210px;
       object-fit: cover;
       transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
@@ -349,107 +409,107 @@
       padding: 0.5rem 1.8rem;
       margin: 0 5px 10px;
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(168, 85, 247, 0.06);
+      color: rgba(255,255,255,0.4);
       transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-weight: 500;
       font-size: 0.9rem;
     }
     .filter-btn.active, .filter-btn:hover {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 252, 0.15));
-      border-color: #00d4ff;
+      background: rgba(168, 85, 247, 0.08);
+      border-color: #a855f7;
       color: #fff;
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.03);
     }
 
     /* ===== TIMELINE ===== */
     .timeline-item {
       position: relative;
-      padding-left: 2.5rem;
-      margin-bottom: 2.5rem;
-      border-left: 2px solid rgba(0, 212, 255, 0.15);
+      padding-left: 2.8rem;
+      margin-bottom: 2.8rem;
+      border-left: 2px solid rgba(168, 85, 247, 0.1);
       transition: 0.3s;
     }
     .timeline-item:hover {
-      border-left-color: rgba(0, 212, 255, 0.4);
+      border-left-color: rgba(168, 85, 247, 0.3);
     }
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -8px;
+      left: -9px;
       top: 4px;
-      width: 14px; height: 14px;
+      width: 16px; height: 16px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
     }
 
-    /* ===== CERTIFICATE GALLERY ===== */
+    /* ===== CERTIFICATE ===== */
     .cert-img {
-      border-radius: 16px;
+      border-radius: 18px;
       transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.03);
+      box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.6);
     }
     .cert-img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 20px 50px -10px rgba(0, 212, 255, 0.15);
-      border-color: rgba(0, 212, 255, 0.15);
+      transform: scale(1.05);
+      box-shadow: 0 20px 60px -10px rgba(168, 85, 247, 0.08);
+      border-color: rgba(168, 85, 247, 0.1);
     }
 
     /* ===== CONTACT ===== */
     .form-control-custom {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 0.9rem 1.2rem;
+      background: rgba(168, 85, 247, 0.02);
+      border: 1px solid rgba(168, 85, 247, 0.06);
+      border-radius: 18px;
+      padding: 0.9rem 1.4rem;
       color: #fff;
       transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .form-control-custom:focus {
-      background: rgba(255,255,255,0.05);
-      border-color: #00d4ff;
-      box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.05), inset 0 1px 0 rgba(255,255,255,0.05);
+      background: rgba(168, 85, 247, 0.04);
+      border-color: #a855f7;
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.04), inset 0 1px 0 rgba(168,85,247,0.04);
       color: #fff;
     }
-    .form-control-custom::placeholder { color: rgba(255,255,255,0.2); }
+    .form-control-custom::placeholder { color: rgba(255,255,255,0.15); }
 
     /* ===== FOOTER ===== */
     .footer-premium {
-      background: rgba(10, 10, 10, 0.95);
+      background: rgba(10, 0, 21, 0.95);
       backdrop-filter: blur(12px);
-      border-top: 1px solid rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(168, 85, 247, 0.03);
     }
     .social-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 44px; height: 44px;
+      width: 46px; height: 46px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.5);
+      background: rgba(168, 85, 247, 0.02);
+      color: rgba(255,255,255,0.35);
       font-size: 1.2rem;
       transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid rgba(168, 85, 247, 0.04);
     }
     .social-icon:hover {
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(123, 47, 252, 0.15));
+      background: rgba(168, 85, 247, 0.08);
       color: #fff;
-      transform: translateY(-5px) scale(1.05);
-      border-color: rgba(0, 212, 255, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
+      transform: translateY(-6px) scale(1.05);
+      border-color: rgba(168, 85, 247, 0.15);
+      box-shadow: 0 10px 40px rgba(168, 85, 247, 0.03);
     }
     #backToTop {
       position: fixed;
       bottom: 30px; right: 30px;
-      width: 50px; height: 50px;
+      width: 52px; height: 52px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
       border: none;
-      color: #0a0a0a;
+      color: #0a0015;
       font-size: 1.6rem;
-      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 8px 40px rgba(168, 85, 247, 0.15);
       transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       z-index: 999;
       opacity: 0;
@@ -463,14 +523,14 @@
     }
     #backToTop:hover {
       transform: scale(1.1);
-      box-shadow: 0 12px 40px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 12px 50px rgba(168, 85, 247, 0.25);
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .hero-title { font-size: 2.5rem; }
       .typing-text { font-size: 1.2rem; }
-      .profile-img-wrapper { width: 140px; height: 140px; }
+      .profile-img-wrapper { width: 150px; height: 150px; }
     }
     @media (max-width: 576px) {
       .hero-title { font-size: 2rem; }
@@ -478,7 +538,7 @@
       .glass-card { padding: 1.5rem 1rem; }
     }
 
-    /* efek glitch kecil pada judul */
+    /* efek glitch kecil */
     .glitch-text {
       position: relative;
     }
@@ -487,9 +547,9 @@
       position: absolute;
       left: 0;
       top: 0;
-      opacity: 0.3;
-      color: #00d4ff;
-      transform: translate(2px, -2px);
+      opacity: 0.2;
+      color: #a855f7;
+      transform: translate(3px, -2px);
       filter: blur(1px);
       pointer-events: none;
     }
@@ -500,7 +560,7 @@
   <!-- LOADING SCREEN -->
   <div id="loading-screen">
     <div class="loader-ring"></div>
-    <p style="color:rgba(255,255,255,0.3); font-weight:300; letter-spacing:2px;">MEMUAT PORTOFOLIO</p>
+    <p style="color:rgba(168,85,247,0.3); font-weight:300; letter-spacing:3px;">MEMUAT PORTOFOLIO</p>
   </div>
 
   <!-- CURSOR GLOW -->
@@ -513,7 +573,7 @@
   <button id="backToTop" class="d-flex align-items-center justify-content-center"><i class="bi bi-chevron-up"></i></button>
 
   <!-- ===== NAVBAR ===== -->
-  <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2" id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#">Awaludin</a>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -538,19 +598,19 @@
       <div class="row align-items-center text-center text-lg-start">
         <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
           <div class="d-lg-none">
-            <div class="profile-img-wrapper"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='36' fill='%2300d4ff' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin"></div>
+            <div class="profile-img-wrapper"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='36' fill='%23a855f7' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin"></div>
           </div>
           <h1 class="hero-title mb-2">Halo, Saya <br><span class="glitch-text" data-text="Awaludin Al Ayubi">Awaludin Al Ayubi</span></h1>
           <div class="typing-text mb-3" id="typingText"></div>
-          <p class="text-secondary mb-4" style="font-size:1.1rem; max-width:500px; color: rgba(255,255,255,0.4) !important;">Mahasiswa Sistem Informasi · Web & UI/UX Enthusiast</p>
+          <p class="mb-4" style="font-size:1.1rem; max-width:500px; color: rgba(255,255,255,0.25);">Mahasiswa Sistem Informasi · Web & UI/UX Enthusiast</p>
           <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
             <a href="#" class="btn btn-glow"><i class="bi bi-download me-2"></i>Download CV</a>
             <a href="#projects" class="btn btn-outline-glow"><i class="bi bi-grid me-2"></i>Lihat Project</a>
           </div>
         </div>
         <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1200">
-          <div class="profile-img-wrapper" style="width:240px; height:240px;">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='42' fill='%2300d4ff' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin">
+          <div class="profile-img-wrapper" style="width:250px; height:250px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23111111'/%3E%3Ctext x='50' y='54' text-anchor='middle' font-size='42' fill='%23a855f7' font-family='Inter' font-weight='700'%3EA%3C/text%3E%3C/svg%3E" alt="Awaludin">
           </div>
         </div>
       </div>
@@ -559,26 +619,26 @@
   </section>
 
   <!-- ===== ABOUT ===== -->
-  <section id="about" class="py-5" style="background: #0a0a0a;">
+  <section id="about" class="py-5" style="background: #0a0015;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Tentang <span style="color:#00d4ff;">Saya</span></h2>
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Tentang <span style="color:#a855f7;">Saya</span></h2>
       <div class="row g-4 align-items-center">
         <div class="col-lg-5" data-aos="fade-right">
           <div class="glass-card p-4">
-            <p style="font-size:1.05rem; line-height:1.8; color: rgba(255,255,255,0.75);">Saya adalah mahasiswa Sistem Informasi dengan ketertarikan pada Web Development, UI/UX Design, Database Management, dan Mobile Development. Saya senang membangun solusi digital yang kreatif, modern, dan bermanfaat bagi banyak orang.</p>
+            <p style="font-size:1.05rem; line-height:1.8; color: rgba(255,255,255,0.6);">Saya adalah mahasiswa Sistem Informasi dengan ketertarikan pada Web Development, UI/UX Design, Database Management, dan Mobile Development. Saya senang membangun solusi digital yang kreatif, modern, dan bermanfaat bagi banyak orang.</p>
             <div class="row text-center mt-4">
-              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="5" style="color:#00d4ff !important;">0</h3><span class="text-secondary" style="color:rgba(255,255,255,0.3) !important;">Project</span></div>
-              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="7" style="color:#00d4ff !important;">0</h3><span class="text-secondary" style="color:rgba(255,255,255,0.3) !important;">Skill</span></div>
-              <div class="col-4"><h3 class="fw-bold text-info counter" data-target="3" style="color:#00d4ff !important;">0</h3><span class="text-secondary" style="color:rgba(255,255,255,0.3) !important;">Sertifikat</span></div>
+              <div class="col-4"><h3 class="fw-bold counter" style="color:#a855f7;" data-target="5">0</h3><span style="color:rgba(255,255,255,0.2);">Project</span></div>
+              <div class="col-4"><h3 class="fw-bold counter" style="color:#a855f7;" data-target="7">0</h3><span style="color:rgba(255,255,255,0.2);">Skill</span></div>
+              <div class="col-4"><h3 class="fw-bold counter" style="color:#a855f7;" data-target="3">0</h3><span style="color:rgba(255,255,255,0.2);">Sertifikat</span></div>
             </div>
           </div>
         </div>
         <div class="col-lg-7" data-aos="fade-left">
           <div class="row g-3">
-            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-code-square fs-1" style="color:#00d4ff;"></i><h5 class="mt-2 text-white">Web Dev</h5><span style="color:rgba(255,255,255,0.3);">HTML, CSS, JS, PHP</span></div></div>
-            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-palette fs-1" style="color:#00d4ff;"></i><h5 class="mt-2 text-white">UI/UX</h5><span style="color:rgba(255,255,255,0.3);">Figma, Prototype</span></div></div>
-            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-database fs-1" style="color:#00d4ff;"></i><h5 class="mt-2 text-white">Database</h5><span style="color:rgba(255,255,255,0.3);">MySQL, ERD</span></div></div>
-            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-phone fs-1" style="color:#00d4ff;"></i><h5 class="mt-2 text-white">Mobile</h5><span style="color:rgba(255,255,255,0.3);">Flutter</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-code-square fs-1" style="color:#a855f7;"></i><h5 class="mt-2 text-white">Web Dev</h5><span style="color:rgba(255,255,255,0.2);">HTML, CSS, JS, PHP</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-palette fs-1" style="color:#a855f7;"></i><h5 class="mt-2 text-white">UI/UX</h5><span style="color:rgba(255,255,255,0.2);">Figma, Prototype</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-database fs-1" style="color:#a855f7;"></i><h5 class="mt-2 text-white">Database</h5><span style="color:rgba(255,255,255,0.2);">MySQL, ERD</span></div></div>
+            <div class="col-md-6"><div class="glass-card p-3 text-center"><i class="bi bi-phone fs-1" style="color:#a855f7;"></i><h5 class="mt-2 text-white">Mobile</h5><span style="color:rgba(255,255,255,0.2);">Flutter</span></div></div>
           </div>
         </div>
       </div>
@@ -586,9 +646,9 @@
   </section>
 
   <!-- ===== SKILLS ===== -->
-  <section id="skills" class="py-5" style="background: #0d0d0d;">
+  <section id="skills" class="py-5" style="background: #0d0020;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Keahlian <span style="color:#00d4ff;">Teknis</span></h2>
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Keahlian <span style="color:#a855f7;">Teknis</span></h2>
       <div class="row g-4">
         <div class="col-lg-6" data-aos="fade-right">
           <div class="glass-card p-4">
@@ -611,9 +671,9 @@
   </section>
 
   <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="py-5" style="background: #0a0a0a;">
+  <section id="projects" class="py-5" style="background: #0a0015;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Project <span style="color:#00d4ff;">Unggulan</span></h2>
+      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Project <span style="color:#a855f7;">Unggulan</span></h2>
       <div class="text-center mb-4" data-aos="fade-up">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="web">Web</button>
@@ -621,39 +681,36 @@
         <button class="filter-btn" data-filter="mobile">Mobile</button>
       </div>
       <div class="row g-4" id="projectContainer">
-        <!-- project 1 -->
         <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="zoom-in">
           <div class="project-card card h-100">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23111111'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2300d4ff' font-family='Inter' font-weight='600'%3E🌴 Alor%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Alor">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='210' viewBox='0 0 400 210'%3E%3Crect width='400' height='210' fill='%23110820'/%3E%3Ctext x='200' y='115' text-anchor='middle' font-size='28' fill='%23a855f7' font-family='Inter' font-weight='600'%3E🌴 Alor%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Alor">
             <div class="card-body">
               <h5 class="card-title fw-bold text-white">Website Pariwisata Alor</h5>
-              <p class="card-text" style="color:rgba(255,255,255,0.4);">Informasi wisata, budaya, sejarah Kabupaten Alor.</p>
-              <span class="badge" style="background:rgba(0,212,255,0.1); color:#00d4ff; border:1px solid rgba(0,212,255,0.1);">HTML · CSS · JS</span>
-              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(255,255,255,0.05); color:rgba(255,255,255,0.6); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Website Pariwisata Alor" data-desc="Website informasi wisata, budaya, sejarah, dan destinasi Kabupaten Alor. Teknologi: HTML, CSS, JavaScript.">Lihat Detail</button>
+              <p style="color:rgba(255,255,255,0.3);">Informasi wisata, budaya, sejarah Kabupaten Alor.</p>
+              <span class="badge" style="background:rgba(168,85,247,0.08); color:#a855f7; border:1px solid rgba(168,85,247,0.06);">HTML · CSS · JS</span>
+              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(168,85,247,0.06); color:rgba(255,255,255,0.4); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Website Pariwisata Alor" data-desc="Website informasi wisata, budaya, sejarah, dan destinasi Kabupaten Alor. Teknologi: HTML, CSS, JavaScript.">Lihat Detail</button>
             </div>
           </div>
         </div>
-        <!-- project 2 -->
         <div class="col-md-6 col-lg-4 project-item" data-category="web" data-aos="zoom-in" data-aos-delay="100">
           <div class="project-card card h-100">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23111111'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2300d4ff' font-family='Inter' font-weight='600'%3E🔧 Inventory%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Inventory">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='210' viewBox='0 0 400 210'%3E%3Crect width='400' height='210' fill='%23110820'/%3E%3Ctext x='200' y='115' text-anchor='middle' font-size='28' fill='%23a855f7' font-family='Inter' font-weight='600'%3E🔧 Inventory%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Inventory">
             <div class="card-body">
               <h5 class="card-title fw-bold text-white">Sistem Inventory Bengkel</h5>
-              <p class="card-text" style="color:rgba(255,255,255,0.4);">Pengelolaan stok sparepart & transaksi bengkel.</p>
-              <span class="badge" style="background:rgba(0,212,255,0.1); color:#00d4ff; border:1px solid rgba(0,212,255,0.1);">PHP · MySQL · Bootstrap</span>
-              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(255,255,255,0.05); color:rgba(255,255,255,0.6); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Sistem Inventory Bengkel Motor" data-desc="Sistem pengelolaan stok sparepart dan transaksi bengkel. Teknologi: PHP, MySQL, Bootstrap.">Lihat Detail</button>
+              <p style="color:rgba(255,255,255,0.3);">Pengelolaan stok sparepart & transaksi bengkel.</p>
+              <span class="badge" style="background:rgba(168,85,247,0.08); color:#a855f7; border:1px solid rgba(168,85,247,0.06);">PHP · MySQL · Bootstrap</span>
+              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(168,85,247,0.06); color:rgba(255,255,255,0.4); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Sistem Inventory Bengkel Motor" data-desc="Sistem pengelolaan stok sparepart dan transaksi bengkel. Teknologi: PHP, MySQL, Bootstrap.">Lihat Detail</button>
             </div>
           </div>
         </div>
-        <!-- project 3 -->
         <div class="col-md-6 col-lg-4 project-item" data-category="uiux" data-aos="zoom-in" data-aos-delay="200">
           <div class="project-card card h-100">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23111111'/%3E%3Ctext x='200' y='110' text-anchor='middle' font-size='28' fill='%2300d4ff' font-family='Inter' font-weight='600'%3E🌸 Parfum%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Parfum">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='210' viewBox='0 0 400 210'%3E%3Crect width='400' height='210' fill='%23110820'/%3E%3Ctext x='200' y='115' text-anchor='middle' font-size='28' fill='%23a855f7' font-family='Inter' font-weight='600'%3E🌸 Parfum%3C/text%3E%3C/svg%3E" class="card-img-top" alt="Parfum">
             <div class="card-body">
               <h5 class="card-title fw-bold text-white">Prototype Website Parfum</h5>
-              <p class="card-text" style="color:rgba(255,255,255,0.4);">UI/UX Design dengan Figma, fitur login & dashboard.</p>
-              <span class="badge" style="background:rgba(0,212,255,0.1); color:#00d4ff; border:1px solid rgba(0,212,255,0.1);">Figma</span>
-              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(255,255,255,0.05); color:rgba(255,255,255,0.6); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Prototype Website Parfum" data-desc="UI/UX Design menggunakan Figma. Fitur Login dan Dashboard Pengguna.">Lihat Detail</button>
+              <p style="color:rgba(255,255,255,0.3);">UI/UX Design dengan Figma, fitur login & dashboard.</p>
+              <span class="badge" style="background:rgba(168,85,247,0.08); color:#a855f7; border:1px solid rgba(168,85,247,0.06);">Figma</span>
+              <button class="btn btn-sm mt-3 w-100" style="border:1px solid rgba(168,85,247,0.06); color:rgba(255,255,255,0.4); border-radius:30px; transition:0.3s;" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Prototype Website Parfum" data-desc="UI/UX Design menggunakan Figma. Fitur Login dan Dashboard Pengguna.">Lihat Detail</button>
             </div>
           </div>
         </div>
@@ -662,26 +719,26 @@
   </section>
 
   <!-- ===== TIMELINE ===== -->
-  <section id="experience" class="py-5" style="background: #0d0d0d;">
+  <section id="experience" class="py-5" style="background: #0d0020;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Pengalaman & <span style="color:#00d4ff;">Pendidikan</span></h2>
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Pengalaman & <span style="color:#a855f7;">Pendidikan</span></h2>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="glass-card p-4">
             <div class="timeline-item" data-aos="fade-up">
               <h5 class="fw-bold text-white">Mahasiswa Sistem Informasi</h5>
-              <span style="color:#00d4ff;">2023 - Sekarang</span>
-              <p class="mt-1" style="color:rgba(255,255,255,0.4);">Fokus pada pengembangan web, basis data, dan desain UI/UX.</p>
+              <span style="color:#a855f7;">2023 - Sekarang</span>
+              <p class="mt-1" style="color:rgba(255,255,255,0.3);">Fokus pada pengembangan web, basis data, dan desain UI/UX.</p>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
               <h5 class="fw-bold text-white">Freelance Web Developer</h5>
-              <span style="color:#00d4ff;">2024 - Sekarang</span>
-              <p class="mt-1" style="color:rgba(255,255,255,0.4);">Membangun website sederhana untuk UMKM dan portofolio.</p>
+              <span style="color:#a855f7;">2024 - Sekarang</span>
+              <p class="mt-1" style="color:rgba(255,255,255,0.3);">Membangun website sederhana untuk UMKM dan portofolio.</p>
             </div>
             <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
               <h5 class="fw-bold text-white">UI/UX Designer (Figma)</h5>
-              <span style="color:#00d4ff;">2025</span>
-              <p class="mt-1" style="color:rgba(255,255,255,0.4);">Mendesain prototype aplikasi mobile dan web untuk tugas kampus.</p>
+              <span style="color:#a855f7;">2025</span>
+              <p class="mt-1" style="color:rgba(255,255,255,0.3);">Mendesain prototype aplikasi mobile dan web untuk tugas kampus.</p>
             </div>
           </div>
         </div>
@@ -690,21 +747,21 @@
   </section>
 
   <!-- ===== CERTIFICATE ===== -->
-  <section id="certificate" class="py-5" style="background: #0a0a0a;">
+  <section id="certificate" class="py-5" style="background: #0a0015;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Sertifikat <span style="color:#00d4ff;">Pendukung</span></h2>
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">Sertifikat <span style="color:#a855f7;">Pendukung</span></h2>
       <div class="row g-3 justify-content-center">
-        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23111111' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2300d4ff' font-family='Inter' font-weight='700'%3E🎓 Sertifikat A%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert1" data-bs-toggle="modal" data-bs-target="#certModal"></div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="100"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23111111' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2300d4ff' font-family='Inter' font-weight='700'%3E📜 Sertifikat B%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert2" data-bs-toggle="modal" data-bs-target="#certModal"></div>
-        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="200"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23111111' rx='12'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%2300d4ff' font-family='Inter' font-weight='700'%3E🏅 Sertifikat C%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert3" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23110820' rx='14'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%23a855f7' font-family='Inter' font-weight='700'%3E🎓 Sertifikat A%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert1" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="100"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23110820' rx='14'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%23a855f7' font-family='Inter' font-weight='700'%3E📜 Sertifikat B%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert2" data-bs-toggle="modal" data-bs-target="#certModal"></div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="flip-left" data-aos-delay="200"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23110820' rx='14'/%3E%3Ctext x='150' y='100' text-anchor='middle' font-size='24' fill='%23a855f7' font-family='Inter' font-weight='700'%3E🏅 Sertifikat C%3C/text%3E%3C/svg%3E" class="cert-img img-fluid" alt="cert3" data-bs-toggle="modal" data-bs-target="#certModal"></div>
       </div>
     </div>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section id="contact" class="py-5" style="background: #0d0d0d;">
+  <section id="contact" class="py-5" style="background: #0d0020;">
     <div class="container py-4">
-      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Hubungi <span style="color:#00d4ff;">Saya</span></h2>
+      <h2 class="text-center fw-bold mb-4" data-aos="fade-up">Hubungi <span style="color:#a855f7;">Saya</span></h2>
       <div class="row g-4 justify-content-center">
         <div class="col-lg-8" data-aos="fade-up">
           <div class="glass-card p-4">
@@ -732,24 +789,22 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer-premium py-4">
     <div class="container text-center">
-      <p class="mb-0" style="color:rgba(255,255,255,0.2);">&copy; 2026 Awaludin Al Ayubi · Built with <i class="bi bi-heart-fill" style="color:#00d4ff; font-size:0.9rem;"></i></p>
+      <p class="mb-0" style="color:rgba(255,255,255,0.12);">&copy; 2026 Awaludin Al Ayubi · Built with <i class="bi bi-heart-fill" style="color:#a855f7; font-size:0.9rem;"></i></p>
     </div>
   </footer>
 
   <!-- ===== MODALS ===== -->
-  <!-- Project Modal -->
   <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content" style="background:#111; border:1px solid rgba(0,212,255,0.08);">
+      <div class="modal-content" style="background:#0d0020; border:1px solid rgba(168,85,247,0.06);">
         <div class="modal-header border-0"><h5 class="modal-title text-white" id="projectModalLabel">Detail Project</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-        <div class="modal-body text-white"><p id="projectModalDesc" style="color:rgba(255,255,255,0.6);">Detail project akan tampil disini.</p></div>
+        <div class="modal-body text-white"><p id="projectModalDesc" style="color:rgba(255,255,255,0.5);">Detail project akan tampil disini.</p></div>
       </div>
     </div>
   </div>
-  <!-- Certificate Modal (lightbox) -->
   <div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content" style="background:#0a0a0a; border:none;"><img src="" id="certModalImg" class="img-fluid rounded" alt="certificate"></div>
+      <div class="modal-content" style="background:#0a0015; border:none;"><img src="" id="certModalImg" class="img-fluid rounded" alt="certificate"></div>
     </div>
   </div>
 
@@ -758,27 +813,21 @@
   <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // ================================================================
-    // 1. LOADING SCREEN
-    // ================================================================
+    // ===== LOADING =====
     window.addEventListener('load', function() {
       setTimeout(() => {
         document.getElementById('loading-screen').classList.add('hide');
       }, 900);
     });
 
-    // ================================================================
-    // 2. CURSOR GLOW
-    // ================================================================
+    // ===== CURSOR GLOW =====
     const glow = document.getElementById('cursor-glow');
     document.addEventListener('mousemove', (e) => {
       glow.style.left = e.clientX + 'px';
       glow.style.top = e.clientY + 'px';
     });
 
-    // ================================================================
-    // 3. SCROLL PROGRESS
-    // ================================================================
+    // ===== SCROLL PROGRESS =====
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const height = document.documentElement.scrollHeight - window.innerHeight;
@@ -792,9 +841,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ================================================================
-    // 4. TYPING EFFECT
-    // ================================================================
+    // ===== TYPING =====
     const texts = ["Web Developer", "UI/UX Designer", "System Analyst", "Flutter Developer"];
     let idx = 0, charIdx = 0, isDeleting = false;
     const typeEl = document.getElementById('typingText');
@@ -812,9 +859,7 @@
     }
     typeLoop();
 
-    // ================================================================
-    // 5. COUNTER ANIMATION (About)
-    // ================================================================
+    // ===== COUNTER =====
     function animateCounters() {
       document.querySelectorAll('.counter').forEach(c => {
         const target = parseInt(c.getAttribute('data-target'));
@@ -833,9 +878,7 @@
     }, { threshold: 0.3 });
     observerCounter.observe(aboutSection);
 
-    // ================================================================
-    // 6. SKILL PROGRESS (trigger saat scroll)
-    // ================================================================
+    // ===== SKILLS =====
     let skillAnimated = false;
     function animateSkills() {
       if (skillAnimated) return;
@@ -859,9 +902,7 @@
     }, { threshold: 0.2 });
     observerSkill.observe(skillsSection);
 
-    // ================================================================
-    // 7. PROJECT FILTER
-    // ================================================================
+    // ===== PROJECT FILTER =====
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
     filterBtns.forEach(btn => {
@@ -879,30 +920,21 @@
       });
     });
 
-    // ================================================================
-    // 8. PROJECT MODAL DETAIL
-    // ================================================================
+    // ===== PROJECT MODAL =====
     const projectModal = document.getElementById('projectModal');
     projectModal.addEventListener('show.bs.modal', function(event) {
       const button = event.relatedTarget;
-      const title = button.getAttribute('data-title');
-      const desc = button.getAttribute('data-desc');
-      document.getElementById('projectModalLabel').textContent = title;
-      document.getElementById('projectModalDesc').textContent = desc;
+      document.getElementById('projectModalLabel').textContent = button.getAttribute('data-title');
+      document.getElementById('projectModalDesc').textContent = button.getAttribute('data-desc');
     });
 
-    // ================================================================
-    // 9. CERTIFICATE LIGHTBOX
-    // ================================================================
+    // ===== CERT LIGHTBOX =====
     const certModal = document.getElementById('certModal');
     certModal.addEventListener('show.bs.modal', function(event) {
-      const img = event.relatedTarget;
-      document.getElementById('certModalImg').src = img.src;
+      document.getElementById('certModalImg').src = event.relatedTarget.src;
     });
 
-    // ================================================================
-    // 10. CONTACT FORM VALIDASI
-    // ================================================================
+    // ===== CONTACT =====
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const inputs = this.querySelectorAll('input, textarea');
@@ -912,30 +944,24 @@
       else alert('Harap isi semua field yang diperlukan.');
     });
 
-    // ================================================================
-    // 11. AOS INIT
-    // ================================================================
+    // ===== AOS =====
     AOS.init({ once: true, offset: 40, duration: 800, easing: 'ease-out-cubic' });
 
-    // ================================================================
-    // 12. PARTICLES.JS (lebih gelap & modern)
-    // ================================================================
+    // ===== PARTICLES =====
     particlesJS('particles-js', {
       particles: {
-        number: { value: 50, density: { enable: true, value_area: 1000 } },
-        color: { value: '#00d4ff' },
+        number: { value: 55, density: { enable: true, value_area: 1000 } },
+        color: { value: '#a855f7' },
         shape: { type: 'circle' },
-        opacity: { value: 0.2, random: true },
-        size: { value: 2.5, random: true },
-        line_linked: { enable: true, distance: 180, color: '#00d4ff', opacity: 0.06, width: 1 },
-        move: { enable: true, speed: 1.8, direction: 'none', random: true, straight: false, out_mode: 'out' }
+        opacity: { value: 0.15, random: true },
+        size: { value: 2.8, random: true },
+        line_linked: { enable: true, distance: 200, color: '#a855f7', opacity: 0.04, width: 1 },
+        move: { enable: true, speed: 1.6, direction: 'none', random: true, straight: false, out_mode: 'out' }
       },
       interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
     });
 
-    // ================================================================
-    // 13. NAVBAR ACTIVE STATE (scroll)
-    // ================================================================
+    // ===== NAVBAR ACTIVE =====
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
     window.addEventListener('scroll', () => {
@@ -950,7 +976,7 @@
       });
     });
 
-    console.log('🚀 Portofolio Awaludin Al Ayubi — siap meluncur!');
+    console.log('🚀 Portofolio Awaludin Al Ayubi — edisi ungu futuristik!');
   </script>
 </body>
 </html>
